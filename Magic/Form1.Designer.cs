@@ -68,7 +68,7 @@
             // 
             this.flowLayoutPanel1.Location = new System.Drawing.Point(46, 214);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(643, 224);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(761, 224);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // Form1
@@ -82,6 +82,7 @@
             this.Controls.Add(this.buttonStart);
             this.Name = "Form1";
             this.Text = "Магия математики";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }
