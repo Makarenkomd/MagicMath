@@ -11,12 +11,13 @@ namespace Magic
 {
     public partial class Form1 : Form
     {
+        int k;
         public Form1()
         {
             InitializeComponent();
             flowLayoutPanel1.Width = 40 * 20 + 100;
             flowLayoutPanel1.Height = 40 * 10 + 100;
-
+            Start();
         }
 
         Label Symbol(int a)
@@ -26,12 +27,17 @@ namespace Magic
             l.Height = 40;
             l.BackColor = Color.Black;
             l.Margin = new Padding(3,3,0,3);
-            l.Text = Convert.ToChar(a+35).ToString();
+            l.Text = getSymbol(a);
             l.Font = new Font("Wingdings", 22);
             l.ForeColor = Color.White;
             l.TextAlign = ContentAlignment.MiddleCenter;
             flowLayoutPanel1.Controls.Add(l);
             return l;
+        }
+
+        string getSymbol(int a)
+        {
+            return Convert.ToChar(a + 35).ToString();
         }
         Label Digit(int a)
         {
@@ -48,15 +54,30 @@ namespace Magic
             return l;
         }
 
-        private void buttonStart_Click(object sender, EventArgs e)
+        void Start()
         {
             Random rnd = new Random();
+            k = rnd.Next(26);
             flowLayoutPanel1.Controls.Clear();
+            label1.Text = "";
             for (int i = 0; i < 100; i++)
             {
                 Digit(i);
-                Symbol(rnd.Next(26));
+                if (i % 9 == 0)
+                    Symbol(k);
+                else
+                    Symbol(rnd.Next(26));
             }
+        }
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            Start();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            label1.Text = getSymbol(k);
         }
     }
 }
